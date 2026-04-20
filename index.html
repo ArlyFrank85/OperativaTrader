@@ -1,1 +1,41 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Trading Management Application</title>\n    <style>\n        body { font-family: Arial, sans-serif; margin: 20px; }\n        h1, h2 { color: #333; }\n        .container { max-width: 800px; margin: auto; }\n        .goal { margin: 20px 0; }\n    </style>\n</head>\n<body>\n    <div class="container">\n        <h1>Trading Management Application</h1>\n        <h2>Capital Management</h2>\n        <p id="capital-management">Track and manage your trading capital here.</p>\n        \n        <h2>Compound Interest Tracking</h2>\n        <p id="compound-interest">Calculate your compound interest over time.</p>\n        \n        <h2>Daily Goals</h2>\n        <div class="goal">\n            <label for="goal-input">Set Daily Goal:</label>\n            <input type="text" id="goal-input" placeholder="Enter your goal">\n            <button onclick="saveGoal()">Save Goal</button>\n        </div>\n        <div id="goals-list"></div>\n        \n        <h2>Operation History</h2>\n        <p id="operation-history">View your trading operation history here.</p>\n        \n        <h2>Local Data Storage</h2>\n        <p>Data can be stored locally using localStorage.</p>\n    </div>\n    <script>\n        function saveGoal() {\n            const goalInput = document.getElementById('goal-input');\n            const goal = goalInput.value;\n            const goalsList = document.getElementById('goals-list');\n            const newGoal = document.createElement('p');\n            newGoal.textContent = goal;\n            goalsList.appendChild(newGoal);\n            localStorage.setItem('dailyGoals', JSON.stringify(goalsList.innerHTML));\n            goalInput.value = '';\n        }\n\n        // Load saved goals from localStorage\n        window.onload = function() {\n            const savedGoals = JSON.parse(localStorage.getItem('dailyGoals'));\n            if(savedGoals) {\n                document.getElementById('goals-list').innerHTML = savedGoals;\n            }\n        };\n    </script>\n</body>\n</html>\n
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operativa Trader</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .gain {
+            color: green;
+        }
+        .loss {
+            color: red;
+        }
+        #risk-selector {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Operativa Trader</h1>
+    <label for="risk-selector">Choose your risk percentage:</label>
+    <select id="risk-selector">
+        <option value="1">1%</option>
+        <option value="2">2%</option>
+        <option value="3">3%</option>
+    </select>
+    
+    <script>
+        // Capital management, compound interest tracking code will be here
+        // Daily goal of 3 wins tracking code
+        // History tracking with local storage code
+        // Easy to edit code structure
+        console.log('Ready to manage your trades!');
+    </script>
+</body>
+</html>
